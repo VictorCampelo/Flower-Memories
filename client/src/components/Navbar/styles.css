@@ -8,6 +8,7 @@ h1 {
 
 header {
   border-radius: 15px 15px;
+  margin-bottom: 25px;
 }
 
 .logo {
@@ -22,7 +23,7 @@ header {
 }
 
 .appBar-1 {
-  border-radius: 15;
+  border-radius: 15px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

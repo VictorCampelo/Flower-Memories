@@ -40,11 +40,13 @@ const Navbar = () => {
 
   return (
     <header className="paper-root root positionStatic colorInherit appBar-1 paper-elevation4">
-      <div to="/" className="logo">
-        <img className={classes.image} src={memoriesLogo} alt="icon" height="90px" />
-        <a component={Link} to="/"><h1>NonFlowers</h1></a>
-        {/* <img component={Link} to="/" src={memoriesText} alt="icon" height="45px" /> */}
-      </div>
+      <Link to="/">
+        <div className="logo">
+          <img className={classes.image} src={memoriesLogo} alt="icon" height="90px" />
+          <a component={Link} to="/"><h1>NonFlowers</h1></a>
+          {/* <img component={Link} to="/" src={memoriesText} alt="icon" height="45px" /> */}
+        </div>
+      </Link>
       <div>
         {user?.result ? (
           <div className={classes.profile}>

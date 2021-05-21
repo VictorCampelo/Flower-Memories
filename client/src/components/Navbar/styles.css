@@ -1,0 +1,226 @@
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 1.8rem;
+}
+
+header {
+  border-radius: 15px 15px;
+}
+
+.logo {
+  /* margin: auto; */
+  display: flex;
+  padding: 10px 20px;
+  align-items: center;
+  border-radius: 15px;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+.appBar-1 {
+  border-radius: 15;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 50px;
+}
+
+.root {
+  width: 100%;
+  z-index: 1100;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.colorInherit {
+  color: inherit;
+}
+
+.positionStatic {
+  position: static;
+}
+
+.paper-elevation4 {
+  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
+    0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+}
+
+.paper-root {
+  color: rgba(0, 0, 0, 0.87);
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  background-color: #fff;
+}
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (max-width: 959px) {
+}
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+  .appBar-1 {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+}
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {
+  .appBar-1 {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .appBar-1 {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (min-width: 240px) and (max-width: 479px) {
+  h1 {
+    font-size: 2rem;
+    word-wrap: break-word;
+  }
+
+  .appBar-1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+@media only screen and (max-width: 239px) {
+  h1 {
+    font-size: 1rem;
+    word-wrap: break-word;
+  }
+
+  .appBar-1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+.MyButtoncontainedPrimary {
+  color: #fff;
+  background-color: #3f51b5;
+}
+
+.MyButtoncontained {
+  color: rgba(0, 0, 0, 0.87);
+  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%),
+    0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+  background-color: #e0e0e0;
+}
+
+.MyButtonroot {
+  color: rgba(0, 0, 0, 0.87);
+  padding: 6px 16px;
+  font-size: 0.875rem;
+  min-width: 64px;
+  box-sizing: border-box;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+  line-height: 1.75;
+  border-radius: 4px;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+}
+
+.MyButtonBaseroot {
+  color: inherit;
+  border: 0;
+  cursor: pointer;
+  margin: 0;
+  display: inline-flex;
+  outline: 0;
+  padding: 0;
+  position: relative;
+  align-items: center;
+  user-select: none;
+  border-radius: 0;
+  vertical-align: middle;
+  -moz-appearance: none;
+  justify-content: center;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.MyButtonlabel {
+  width: 100%;
+  display: inherit;
+  align-items: inherit;
+  justify-content: inherit;
+}
+
+.login-btn {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  color: #fff;
+  background-color: #3f51b5;
+  cursor: pointer;
+  padding: 6px 5px;
+  font-size: 0.875rem;
+  border: 0;
+  transition: all 0.5s;
+  border-radius: 10px;
+  width: auto;
+  position: relative;
+  min-width: 80px;
+}
+
+.login-btn:after {
+  font-weight: 400;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transform: translate(-10%, -10%);
+}
+
+.login-btn:hover {
+  background: #2b2bff;
+  transition: all 0.5s;
+  border-radius: 10px;
+  box-shadow: 0px 6px 15px #0000ff61;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  color: #ffffff;
+  font-weight: 600;
+}
+.login-btn:after {
+  opacity: 1;
+  transition: all 0.5s;
+  color: #ffffff;
+}

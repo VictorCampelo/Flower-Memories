@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { AppBar, Typography, Toolbar, Avatar, Button } from '@material-ui/core';
+import { Typography, Avatar, Button } from '@material-ui/core';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import decode from 'jwt-decode';
 
-import memoriesLogo from '../../images/memoriesLogo.png';
-import memoriesText from '../../images/memoriesText.png';
+import memoriesLogo from '../../images/logo.png';
+// import memoriesText from '../../images/memoriesText.png';
 import * as actionType from '../../constants/actionTypes';
 import useStyles from './styles';
+
+import './styles.css';
 
 const Navbar = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
@@ -37,12 +39,13 @@ const Navbar = () => {
   }, [location]);
 
   return (
-    <AppBar className={classes.appBar} position="static" color="inherit">
-      <Link to="/" className={classes.brandContainer}>
-        <img component={Link} to="/" src={memoriesText} alt="icon" height="45px" />
-        <img className={classes.image} src={memoriesLogo} alt="icon" height="40px" />
-      </Link>
-      <Toolbar className={classes.toolbar}>
+    <header className="paper-root root positionStatic colorInherit appBar-1 paper-elevation4">
+      <div to="/" className="logo">
+        <img className={classes.image} src={memoriesLogo} alt="icon" height="90px" />
+        <a component={Link} to="/"><h1>NonFlowers</h1></a>
+        {/* <img component={Link} to="/" src={memoriesText} alt="icon" height="45px" /> */}
+      </div>
+      <div>
         {user?.result ? (
           <div className={classes.profile}>
             <Avatar className={classes.purple} alt={user?.result.name} src={user?.result.imageUrl}>{user?.result.name.charAt(0)}</Avatar>
@@ -50,10 +53,13 @@ const Navbar = () => {
             <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Logout</Button>
           </div>
         ) : (
-          <Button component={Link} to="/auth" variant="contained" color="primary">Sign In</Button>
+          // <Button component={Link} to="/auth" variant="contained" color="primary">Sign In</Button>
+          <Link to="/auth">
+            <button type="button" className="login-btn">Entrar</button>
+          </Link>
         )}
-      </Toolbar>
-    </AppBar>
+      </div>
+    </header>
   );
 };
 

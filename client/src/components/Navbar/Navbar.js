@@ -3,9 +3,7 @@ import { Typography, Avatar, Button } from '@material-ui/core';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import decode from 'jwt-decode';
-
 import memoriesLogo from '../../images/logo.png';
-// import memoriesText from '../../images/memoriesText.png';
 import * as actionType from '../../constants/actionTypes';
 import useStyles from './styles';
 
@@ -38,29 +36,75 @@ const Navbar = () => {
     setUser(JSON.parse(localStorage.getItem('profile')));
   }, [location]);
 
+  const [classOn, setClassOn] = useState(false);
+
   return (
-    <header className="paper-root root positionStatic colorInherit appBar-1 paper-elevation4">
-      <Link to="/">
-        <div className="logo">
-          <img className={classes.image} src={memoriesLogo} alt="icon" height="90px" />
-          <a component={Link} to="/"><h1>NonFlowers</h1></a>
-          {/* <img component={Link} to="/" src={memoriesText} alt="icon" height="45px" /> */}
-        </div>
-      </Link>
-      <div>
-        {user?.result ? (
-          <div className={classes.profile}>
-            <Avatar className={classes.purple} alt={user?.result.name} src={user?.result.imageUrl}>{user?.result.name.charAt(0)}</Avatar>
-            <Typography className={classes.userName} variant="h6">{user?.result.name}</Typography>
-            <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Logout</Button>
+
+    <header>
+      <div className="containerHeader">
+        <Link to="/">
+          <div className="logo">
+            <img className="image" src={memoriesLogo} alt="icon" />
+            <a component={Link} to="/"><h1>NonFlowers</h1></a>
+            {/* <img component={Link} to="/" src={memoriesText} alt="icon" height="45px" /> */}
           </div>
-        ) : (
-          // <Button component={Link} to="/auth" variant="contained" color="primary">Sign In</Button>
-          <Link to="/auth">
-            <button type="button" className="login-btn">Entrar</button>
-          </Link>
-        )}
+        </Link>
+
+        <div className={classOn ? 'menu-section on' : 'menu-section'} onClick={() => setClassOn(!classOn)}>
+          <div className="menu-toggle">
+            <div className="one" />
+            <div className="two" />
+            <div className="three" />
+          </div>
+
+          {user?.result ? (
+            <nav>
+              <ul>
+                <li>
+                  <Avatar
+                    className={classes.purple}
+                    alt={user?.result.name}
+                    src={user?.result.imageUrl}
+                  >
+                    {user?.result.name.charAt(0)}
+                  </Avatar>
+                </li>
+                <li>
+                  <Typography className={classes.userName} variant="h6">
+                    {user?.result.name}
+                  </Typography>
+                </li>
+                <li>
+                  <Button
+                    variant="contained"
+                    className={classes.logout}
+                    color="secondary"
+                    onClick={logout}
+                  >
+                    Logout
+                  </Button>
+                </li>
+              </ul>
+            </nav>
+          ) : (
+            <nav>
+              <ul>
+                <li>
+                  <a href="/">Cadastre-se</a>
+                </li>
+                <li>
+                  <Link to="/auth">
+                    <button type="button" className="login-btn">
+                      ENTRAR
+                    </button>
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          )}
+        </div>
       </div>
+
     </header>
   );
 };

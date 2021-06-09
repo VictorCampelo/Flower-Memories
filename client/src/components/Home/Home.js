@@ -103,7 +103,7 @@ const Home = () => {
             </Paper>
             )}
           </Grid>
-          <Grid item xs={12} sm={7} md={7}>
+          <Grid className={classes.grid} item xs={12} sm={7} md={7}>
             <Posts setCurrentId={setCurrentId} />
           </Grid>
         </div>

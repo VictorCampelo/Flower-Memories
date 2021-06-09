@@ -81,7 +81,7 @@ const Navbar = () => {
                     color="secondary"
                     onClick={logout}
                   >
-                    Logout
+                    Sair
                   </Button>
                 </li>
               </ul>
@@ -95,7 +95,7 @@ const Navbar = () => {
                 <li>
                   <Link to="/auth">
                     <button type="button" className="login-btn">
-                      ENTRAR
+                      Entrar
                     </button>
                   </Link>
                 </li>

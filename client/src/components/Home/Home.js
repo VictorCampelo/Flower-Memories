@@ -61,7 +61,7 @@ const Home = () => {
     <Grow in>
       <Container maxWidth="xl">
         <div className="MuiGrid-root makeStyles-gridContainer-12-home MuiGrid-container MuiGrid-spacing-xs-3 MuiGrid-justify-xs-space-between">
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={12} sm={5} md={5}>
             <AppBar
               className={classes.appBarSearch}
               position="static"
@@ -93,17 +93,17 @@ const Home = () => {
                 Procurar
               </Button> */}
               <button onClick="{searchPost}" type="button" className="login-btn-search">
-                PROCURAR
+                Procurar
               </button>
             </AppBar>
-            <Form currentId={currentId} setCurrentId={setCurrentId} />
+            <Form className={classes.form} currentId={currentId} setCurrentId={setCurrentId} />
             {!searchQuery && !tags.length && (
             <Paper className={classes.pagination} elevation={6}>
               <Pagination page={page} />
             </Paper>
             )}
           </Grid>
-          <Grid item xs={12} sm={6} md={9}>
+          <Grid item xs={12} sm={7} md={7}>
             <Posts setCurrentId={setCurrentId} />
           </Grid>
         </div>

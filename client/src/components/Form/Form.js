@@ -50,7 +50,7 @@ const Form = ({ currentId, setCurrentId }) => {
   if (!user?.result?.name) {
     return (
       <Paper className={classes.paper} elevation={6}>
-        <Typography variant="h6" align="center">
+        <Typography className={classes.h6} variant="h6" align="center">
           Por favor, faça o seu Login para criar as suas próprias publicações e interagir com outras postagens.
         </Typography>
       </Paper>

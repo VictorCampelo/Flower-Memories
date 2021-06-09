@@ -6,10 +6,12 @@ import decode from 'jwt-decode';
 import memoriesLogo from '../../images/logo.png';
 import * as actionType from '../../constants/actionTypes';
 import useStyles from './styles';
+import { useAuth } from '../../context/auth';
 
 import './styles.css';
 
 const Navbar = () => {
+  const { setIsTrueFalse } = useAuth();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   const dispatch = useDispatch();
   const location = useLocation();
@@ -90,10 +92,22 @@ const Navbar = () => {
             <nav>
               <ul>
                 <li>
-                  <a href="/">Cadastre-se</a>
+                  <Link
+                    to={{
+                      pathname: '/auth',
+                    }}
+                    onClick={() => { setIsTrueFalse(true); }}
+                  >
+                    Cadastre-se
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/auth">
+                  <Link
+                    to={{
+                      pathname: '/auth',
+                    }}
+                    onClick={() => { setIsTrueFalse(false); }}
+                  >
                     <button type="button" className="login-btn">
                       Entrar
                     </button>

@@ -18,6 +18,8 @@ import { AUTH } from '../../constants/actionTypes';
 import useStyles from './styles';
 import Input from './Input';
 
+import { useAuth } from '../../context/auth';
+
 const initialState = {
   firstName: '',
   lastName: '',
@@ -27,25 +29,30 @@ const initialState = {
 };
 
 const SignUp = () => {
-  const [form, setForm] = useState(initialState);
-  const [isSignup, setIsSignup] = useState(false);
-  const dispatch = useDispatch();
+  const { isTrueFalse, setIsTrueFalse } = useAuth();
   const history = useHistory();
-  const classes = useStyles();
 
+  // const { state } = history.location;
+  const [form, setForm] = useState(initialState);
+
+  // const [isTrueFalse, setisTrueFalse] = useState(isTrueFalse);
+
+  const dispatch = useDispatch();
+  const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
   const handleShowPassword = () => setShowPassword(!showPassword);
 
   const switchMode = () => {
+    // setIsTrueFalse(!isTrueFalse);
     setForm(initialState);
-    setIsSignup((prevIsSignup) => !prevIsSignup);
+    setIsTrueFalse((previsTrueFalse) => !previsTrueFalse);
     setShowPassword(false);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (isSignup) {
+    if (isTrueFalse) {
       dispatch(signup(form, history));
     } else {
       dispatch(signin(form, history));
@@ -75,12 +82,12 @@ const SignUp = () => {
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
-        <Typography component="h1" variant="h5">
-          {isSignup ? 'Cadastrar-se no Sistema' : 'Entrar no Sistema'}
+        <Typography className={classes.h5} component="h1" variant="h5">
+          {isTrueFalse ? 'Cadastro' : 'Entrar no Sistema'}
         </Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
-            {isSignup && (
+            {isTrueFalse && (
               <>
                 <Input
                   name="firstName"
@@ -110,7 +117,7 @@ const SignUp = () => {
               type={showPassword ? 'text' : 'password'}
               handleShowPassword={handleShowPassword}
             />
-            {isSignup && (
+            {isTrueFalse && (
               <Input
                 name="confirmPassword"
                 label="Repita sua senha"
@@ -126,7 +133,7 @@ const SignUp = () => {
             color="primary"
             className={classes.submit}
           >
-            {isSignup ? 'Cadastrar' : 'Entrar'}
+            {isTrueFalse ? 'Cadastrar' : 'Entrar'}
           </Button>
           <GoogleLogin
             clientId="564033717568-bu2nr1l9h31bhk9bff4pqbenvvoju3oq.apps.googleusercontent.com"
@@ -150,7 +157,7 @@ const SignUp = () => {
           <Grid container justify="flex-end">
             <Grid item>
               <Button onClick={switchMode}>
-                {isSignup
+                {isTrueFalse
                   ? 'Já possui uma conta? Faça login'
                   : 'Não tem uma conta? Cadastre-se'}
               </Button>

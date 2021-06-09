@@ -29,7 +29,7 @@ const Home = () => {
   const page = query.get('page') || 1;
   const searchQuery = query.get('searchQuery');
 
-  const [currentId, setCurrentId] = useState(0);
+  const [currentId, setCurrentId] = useState();
   const dispatch = useDispatch();
 
   const [search, setSearch] = useState('');
@@ -61,7 +61,7 @@ const Home = () => {
     <Grow in>
       <Container maxWidth="xl">
         <div className="MuiGrid-root makeStyles-gridContainer-12-home MuiGrid-container MuiGrid-spacing-xs-3 MuiGrid-justify-xs-space-between">
-          <Grid item xs={12} sm={5} md={5}>
+          <Grid item xs={12} sm={4} md={4}>
             <AppBar
               className={classes.appBarSearch}
               position="static"
@@ -103,7 +103,7 @@ const Home = () => {
             </Paper>
             )}
           </Grid>
-          <Grid className={classes.grid} item xs={12} sm={7} md={7}>
+          <Grid className={classes.grid} item xs={12} sm={8} md={8}>
             <Posts setCurrentId={setCurrentId} />
           </Grid>
         </div>

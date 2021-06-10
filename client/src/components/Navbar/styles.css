@@ -37,6 +37,7 @@ header nav ul {
 
 header nav ul li {
   list-style: none;
+  padding-left: 1rem;
 }
 
 header nav ul li a {

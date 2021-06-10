@@ -77,20 +77,20 @@ const Form = ({ currentId, setCurrentId }) => {
         onSubmit={handleSubmit}
       >
         <Typography variant="h6">
-          {currentId ? `Editing "${post?.title}"` : 'Creating a Memory'}
+          {currentId ? `Editing "${post?.title}"` : 'Compartilhe sua mensagem'}
         </Typography>
         <TextField
-          name="title"
+          name="Título"
           variant="outlined"
-          label="Title"
+          label="Título"
           fullWidth
           value={postData.title}
           onChange={(e) => setPostData({ ...postData, title: e.target.value })}
         />
         <TextField
-          name="message"
+          name="Mensagem"
           variant="outlined"
-          label="Message"
+          label="Mensagem"
           fullWidth
           multiline
           rows={4}
@@ -99,7 +99,7 @@ const Form = ({ currentId, setCurrentId }) => {
         />
         <div style={{ padding: '5px 0', width: '94%' }}>
           <ChipInput
-            name="tags"
+            name="Tags"
             variant="outlined"
             label="Tags"
             fullWidth
@@ -123,7 +123,7 @@ const Form = ({ currentId, setCurrentId }) => {
           type="submit"
           fullWidth
         >
-          Submit
+          Publicar
         </Button>
         <Button
           variant="contained"
@@ -132,7 +132,7 @@ const Form = ({ currentId, setCurrentId }) => {
           onClick={clear}
           fullWidth
         >
-          Clear
+          Limpar
         </Button>
       </form>
     </Paper>

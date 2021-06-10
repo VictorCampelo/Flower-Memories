@@ -103,9 +103,9 @@ const Home = () => {
             </Paper>
             )}
           </Grid>
-          <Grid className={classes.grid} item xs={12} sm={8} md={8}>
-            <Posts setCurrentId={setCurrentId} />
-          </Grid>
+          {/* <Grid className={classes.grid} item xs={12} sm={8} md={8}> */}
+          <Posts setCurrentId={setCurrentId} />
+          {/* </Grid> */}
         </div>
       </Container>
     </Grow>

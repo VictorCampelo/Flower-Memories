@@ -9,6 +9,7 @@ export default makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
+    color: 'hsl(250deg 46% 55%)',
   },
   form: {
     display: 'flex',
@@ -21,5 +22,8 @@ export default makeStyles((theme) => ({
   },
   buttonSubmit: {
     marginBottom: 10,
+  },
+  h6: {
+    fontSize: '1rem',
   },
 }));

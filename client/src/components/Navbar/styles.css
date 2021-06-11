@@ -4,7 +4,7 @@ a {
 }
 
 h1 {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
 }
 
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
@@ -37,17 +37,18 @@ header nav ul {
 
 header nav ul li {
   list-style: none;
+  padding-left: 1rem;
 }
 
 header nav ul li a {
   text-decoration: none;
   color: rgb(241, 239, 239);
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   /* font-family: "Roboto", sans-serif; */
   /* font-size: 1.2rem; */
   padding: 2rem 1rem 2rem 1rem;
   transition: all 250ms linear 0s;
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 500;
 }
 
@@ -69,7 +70,7 @@ header nav ul li a .FiLogOut {
 }
 
 .image {
-  height: 90px;
+  height: 60px;
   padding-bottom: 10px;
   /* margin-top: 5px;
   margin-left: 10px; */
@@ -335,7 +336,7 @@ header nav ul li a .FiLogOut {
 .login-btn {
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #5540bf;
   cursor: pointer;
   padding: 6px 5px;
   font-size: 0.875rem;
@@ -358,10 +359,10 @@ header nav ul li a .FiLogOut {
 }
 
 .login-btn:hover {
-  background: #2b2bff;
+  background: #624dcb;
   transition: all 0.5s;
   border-radius: 10px;
-  box-shadow: 0px 6px 15px #0000ff61;
+  box-shadow: 0px 4px 16px #3d3d8f;
   padding: 0.5rem 0.5rem 0.5rem 0.5rem;
   color: #ffffff;
   font-weight: 600;
@@ -383,10 +384,17 @@ header nav ul li a .FiLogOut {
   }
 }
 
-@media (max-width: 630px) {
+@media (max-width: 280px) {
   html {
-    font-size: 70%;
+    font-size: 80%;
   }
+}
+@media (max-width: 200px) {
+  html {
+    font-size: 50%;
+  }
+}
+@media (max-width: 630px) {
   .hero .container {
     flex-direction: column;
     text-align: center;

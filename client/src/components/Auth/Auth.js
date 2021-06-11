@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core';
+import {
+  Avatar,
+  Button,
+  Paper,
+  Grid,
+  Typography,
+  Container,
+} from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -11,28 +18,41 @@ import { AUTH } from '../../constants/actionTypes';
 import useStyles from './styles';
 import Input from './Input';
 
-const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
+import { useAuth } from '../../context/auth';
+
+const initialState = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
+};
 
 const SignUp = () => {
-  const [form, setForm] = useState(initialState);
-  const [isSignup, setIsSignup] = useState(false);
-  const dispatch = useDispatch();
+  const { isTrueFalse, setIsTrueFalse } = useAuth();
   const history = useHistory();
-  const classes = useStyles();
 
+  // const { state } = history.location;
+  const [form, setForm] = useState(initialState);
+
+  // const [isTrueFalse, setisTrueFalse] = useState(isTrueFalse);
+
+  const dispatch = useDispatch();
+  const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
   const handleShowPassword = () => setShowPassword(!showPassword);
 
   const switchMode = () => {
+    // setIsTrueFalse(!isTrueFalse);
     setForm(initialState);
-    setIsSignup((prevIsSignup) => !prevIsSignup);
+    setIsTrueFalse((previsTrueFalse) => !previsTrueFalse);
     setShowPassword(false);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (isSignup) {
+    if (isTrueFalse) {
       dispatch(signup(form, history));
     } else {
       dispatch(signin(form, history));
@@ -48,11 +68,11 @@ const SignUp = () => {
 
       history.push('/');
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
-  const googleError = () => console.log('Erro ao tentar login pelo Google. Tente Novamente!');
+  // const googleError = () => console.log('Erro ao tentar login pelo Google. Tente Novamente!');
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -62,37 +82,84 @@ const SignUp = () => {
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
-        <Typography component="h1" variant="h5">{ isSignup ? 'Cadastrar-se no Sistema' : 'Entrar no Sistema' }</Typography>
+        <Typography className={classes.h5} component="h1" variant="h5">
+          {isTrueFalse ? 'Cadastro' : 'Entrar no Sistema'}
+        </Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
-            { isSignup && (
-            <>
-              <Input name="firstName" label="Primeiro Nome" handleChange={handleChange} autoFocus half />
-              <Input name="lastName" label="Sobrenome" handleChange={handleChange} half />
-            </>
+            {isTrueFalse && (
+              <>
+                <Input
+                  name="firstName"
+                  label="Primeiro Nome"
+                  handleChange={handleChange}
+                  autoFocus
+                  half
+                />
+                <Input
+                  name="lastName"
+                  label="Sobrenome"
+                  handleChange={handleChange}
+                  half
+                />
+              </>
             )}
-            <Input name="email" label="E-mail" handleChange={handleChange} type="email" />
-            <Input name="password" label="Senha" handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} />
-            { isSignup && <Input name="confirmPassword" label="Repita sua senha" handleChange={handleChange} type="password" /> }
+            <Input
+              name="email"
+              label="E-mail"
+              handleChange={handleChange}
+              type="email"
+            />
+            <Input
+              name="password"
+              label="Senha"
+              handleChange={handleChange}
+              type={showPassword ? 'text' : 'password'}
+              handleShowPassword={handleShowPassword}
+            />
+            {isTrueFalse && (
+              <Input
+                name="confirmPassword"
+                label="Repita sua senha"
+                handleChange={handleChange}
+                type="password"
+              />
+            )}
           </Grid>
-          <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
-            { isSignup ? 'Cadastrar' : 'Entrar' }
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            {isTrueFalse ? 'Cadastrar' : 'Entrar'}
           </Button>
           <GoogleLogin
             clientId="564033717568-bu2nr1l9h31bhk9bff4pqbenvvoju3oq.apps.googleusercontent.com"
             render={(renderProps) => (
-              <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained">
-                Entre com sua conta Google
+              <Button
+                className={classes.googleButton}
+                color="primary"
+                fullWidth
+                onClick={renderProps.onClick}
+                disabled={renderProps.disabled}
+                startIcon={<Icon />}
+                variant="contained"
+              >
+                Entre com sua conta do Google
               </Button>
             )}
             onSuccess={googleSuccess}
-            onFailure={googleError}
+            // onFailure={googleError}
             cookiePolicy="single_host_origin"
           />
           <Grid container justify="flex-end">
             <Grid item>
               <Button onClick={switchMode}>
-                { isSignup ? 'Já possui uma conta? Faça login' : 'Não tem uma conta? Cadastre-se' }
+                {isTrueFalse
+                  ? 'Já possui uma conta? Faça login'
+                  : 'Não tem uma conta? Cadastre-se'}
               </Button>
             </Grid>
           </Grid>

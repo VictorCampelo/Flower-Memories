@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
-import { Container, Grow, Grid, AppBar, TextField, Button, Paper } from '@material-ui/core';
+import {
+  Container,
+  Grow,
+  Grid,
+  AppBar,
+  TextField,
+  // Button,
+  Paper,
+} from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import ChipInput from 'material-ui-chip-input';
@@ -10,6 +18,8 @@ import Form from '../Form/Form';
 import Pagination from '../Pagination';
 import useStyles from './styles';
 
+import './styles.css';
+
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
@@ -19,7 +29,7 @@ const Home = () => {
   const page = query.get('page') || 1;
   const searchQuery = query.get('searchQuery');
 
-  const [currentId, setCurrentId] = useState(0);
+  const [currentId, setCurrentId] = useState();
   const dispatch = useDispatch();
 
   const [search, setSearch] = useState('');
@@ -29,7 +39,9 @@ const Home = () => {
   const searchPost = () => {
     if (search.trim() || tags) {
       dispatch(getPostsBySearch({ search, tags: tags.join(',') }));
-      history.push(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`);
+      history.push(
+        `/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`,
+      );
     } else {
       history.push('/');
     }
@@ -48,31 +60,53 @@ const Home = () => {
   return (
     <Grow in>
       <Container maxWidth="xl">
-        <Grid container justify="space-between" alignItems="stretch" spacing={3} className={classes.gridContainer}>
-          <Grid item xs={12} sm={6} md={9}>
-            <Posts setCurrentId={setCurrentId} />
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <AppBar className={classes.appBarSearch} position="static" color="inherit">
-              <TextField onKeyDown={handleKeyPress} name="search" variant="outlined" label="Search Memories" fullWidth value={search} onChange={(e) => setSearch(e.target.value)} />
+        <div className="MuiGrid-root makeStyles-gridContainer-12-home MuiGrid-container MuiGrid-spacing-xs-3 MuiGrid-justify-xs-space-between">
+          <Grid item xs={12} sm={4} md={4}>
+            <AppBar
+              className={classes.appBarSearch}
+              position="static"
+              color="inherit"
+            >
+              <TextField
+                onKeyDown={handleKeyPress}
+                name="search"
+                variant="outlined"
+                label="Procurar Postagem"
+                fullWidth
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
               <ChipInput
                 style={{ margin: '10px 0' }}
                 value={tags}
                 onAdd={(chip) => handleAddChip(chip)}
                 onDelete={(chip) => handleDeleteChip(chip)}
-                label="Search Tags"
+                label="Procurar por Tag"
                 variant="outlined"
               />
-              <Button onClick={searchPost} className={classes.searchButton} variant="contained" color="primary">Search</Button>
+              {/* <Button
+                onClick={searchPost}
+                className={classes.searchButton}
+                variant="contained"
+                color="primary"
+              >
+                Procurar
+              </Button> */}
+              <button onClick="{searchPost}" type="button" className="login-btn-search">
+                Procurar
+              </button>
             </AppBar>
-            <Form currentId={currentId} setCurrentId={setCurrentId} />
-            {(!searchQuery && !tags.length) && (
-              <Paper className={classes.pagination} elevation={6}>
-                <Pagination page={page} />
-              </Paper>
+            <Form className={classes.form} currentId={currentId} setCurrentId={setCurrentId} />
+            {!searchQuery && !tags.length && (
+            <Paper className={classes.pagination} elevation={6}>
+              <Pagination page={page} />
+            </Paper>
             )}
           </Grid>
-        </Grid>
+          {/* <Grid className={classes.grid} item xs={12} sm={8} md={8}> */}
+          <Posts setCurrentId={setCurrentId} />
+          {/* </Grid> */}
+        </div>
       </Container>
     </Grow>
   );

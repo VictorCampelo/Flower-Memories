@@ -9,8 +9,15 @@ import { createPost, updatePost } from '../../actions/posts';
 import useStyles from './styles';
 
 const Form = ({ currentId, setCurrentId }) => {
-  const [postData, setPostData] = useState({ title: '', message: '', tags: [], selectedFile: '' });
-  const post = useSelector((state) => (currentId ? state.posts.posts.find((message) => message._id === currentId) : null));
+  const [postData, setPostData] = useState({
+    title: '',
+    message: '',
+    tags: [],
+    selectedFile: '',
+  });
+  const post = useSelector((state) => (currentId
+    ? state.posts.posts.find((message) => message._id === currentId)
+    : null));
   const dispatch = useDispatch();
   const classes = useStyles();
   const user = JSON.parse(localStorage.getItem('profile'));
@@ -33,7 +40,9 @@ const Form = ({ currentId, setCurrentId }) => {
       dispatch(createPost({ ...postData, name: user?.result?.name }, history));
       clear();
     } else {
-      dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }));
+      dispatch(
+        updatePost(currentId, { ...postData, name: user?.result?.name }),
+      );
       clear();
     }
   };
@@ -41,8 +50,8 @@ const Form = ({ currentId, setCurrentId }) => {
   if (!user?.result?.name) {
     return (
       <Paper className={classes.paper} elevation={6}>
-        <Typography variant="h6" align="center">
-          Please Sign In to create your own memories and like others memories.
+        <Typography className={classes.h6} variant="h6" align="center">
+          Por favor, faça o seu Login para criar as suas próprias publicações e interagir com outras postagens.
         </Typography>
       </Paper>
     );
@@ -53,18 +62,44 @@ const Form = ({ currentId, setCurrentId }) => {
   };
 
   const handleDeleteChip = (chipToDelete) => {
-    setPostData({ ...postData, tags: postData.tags.filter((tag) => tag !== chipToDelete) });
+    setPostData({
+      ...postData,
+      tags: postData.tags.filter((tag) => tag !== chipToDelete),
+    });
   };
 
   return (
     <Paper className={classes.paper} elevation={6}>
-      <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-        <Typography variant="h6">{currentId ? `Editing "${post?.title}"` : 'Creating a Memory'}</Typography>
-        <TextField name="title" variant="outlined" label="Title" fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })} />
-        <TextField name="message" variant="outlined" label="Message" fullWidth multiline rows={4} value={postData.message} onChange={(e) => setPostData({ ...postData, message: e.target.value })} />
+      <form
+        autoComplete="off"
+        noValidate
+        className={`${classes.root} ${classes.form}`}
+        onSubmit={handleSubmit}
+      >
+        <Typography variant="h6">
+          {currentId ? `Editing "${post?.title}"` : 'Compartilhe sua mensagem'}
+        </Typography>
+        <TextField
+          name="Título"
+          variant="outlined"
+          label="Título"
+          fullWidth
+          value={postData.title}
+          onChange={(e) => setPostData({ ...postData, title: e.target.value })}
+        />
+        <TextField
+          name="Mensagem"
+          variant="outlined"
+          label="Mensagem"
+          fullWidth
+          multiline
+          rows={4}
+          value={postData.message}
+          onChange={(e) => setPostData({ ...postData, message: e.target.value })}
+        />
         <div style={{ padding: '5px 0', width: '94%' }}>
           <ChipInput
-            name="tags"
+            name="Tags"
             variant="outlined"
             label="Tags"
             fullWidth
@@ -73,9 +108,32 @@ const Form = ({ currentId, setCurrentId }) => {
             onDelete={(chip) => handleDeleteChip(chip)}
           />
         </div>
-        <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })} /></div>
-        <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
-        <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
+        <div className={classes.fileInput}>
+          <FileBase
+            type="file"
+            multiple={false}
+            onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })}
+          />
+        </div>
+        <Button
+          className={classes.buttonSubmit}
+          variant="contained"
+          color="primary"
+          size="large"
+          type="submit"
+          fullWidth
+        >
+          Publicar
+        </Button>
+        <Button
+          variant="contained"
+          color="secondary"
+          size="small"
+          onClick={clear}
+          fullWidth
+        >
+          Limpar
+        </Button>
       </form>
     </Paper>
   );

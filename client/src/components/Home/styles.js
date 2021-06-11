@@ -17,4 +17,11 @@ export default makeStyles((theme) => ({
       flexDirection: 'column-reverse',
     },
   },
+  grid: {
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+  },
 }));

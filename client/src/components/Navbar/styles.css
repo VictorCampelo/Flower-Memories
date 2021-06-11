@@ -1,20 +1,84 @@
 a {
   text-decoration: none;
+  color: hsl(0deg 0% 94%);
 }
 
 h1 {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
 }
 
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
+
 header {
+  width: 100%;
+  background-color: hsl(250deg 55% 55%);
   border-radius: 15px 15px;
   margin-bottom: 25px;
+  box-shadow: 0px 6px 15px #0000ff61;
+}
+
+header .containerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60%;
+  width: 95%;
+  margin: auto;
+}
+
+header nav {
+  display: flex;
+}
+
+header nav ul {
+  display: flex;
+  align-items: center;
+}
+
+header nav ul li {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: rgb(241, 239, 239);
+  /* text-transform: uppercase; */
+  /* font-family: "Roboto", sans-serif; */
+  /* font-size: 1.2rem; */
+  padding: 2rem 1rem 2rem 1rem;
+  transition: all 250ms linear 0s;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+header nav ul li a:hover {
+  color: #ffffff;
+  font-weight: 600;
+}
+header nav ul li a {
+  position: relative;
+  animation-name: menu;
+  animation-duration: 1s;
+  transition: 100ms;
+}
+
+header nav ul li a .FiLogOut {
+  position: relative;
+  top: 2px;
+  left: 2px;
+}
+
+.image {
+  height: 60px;
+  padding-bottom: 10px;
+  /* margin-top: 5px;
+  margin-left: 10px; */
 }
 
 .logo {
   /* margin: auto; */
   display: flex;
-  padding: 10px 20px;
   align-items: center;
   border-radius: 15px;
   flex-direction: row;
@@ -28,7 +92,7 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 50px;
+  padding: 0px 20px 0px 20px;
 }
 
 .root {
@@ -89,16 +153,37 @@ header {
 }
 
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
-@media only screen and (min-width: 240px) and (max-width: 479px) {
+@media only screen and (min-width: 426px) and (max-width: 479px) {
   h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     word-wrap: break-word;
   }
 
   .appBar-1 {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+
+  .logo {
+    display: flex;
+    flex-direction: row;
     justify-content: center;
+    flex-wrap: nowrap;
+  }
+}
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (min-width: 367px) and (max-width: 425px) {
+  h1 {
+    font-size: 1.6rem;
+    word-wrap: break-word;
+  }
+
+  .appBar-1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     flex-wrap: wrap;
   }
 
@@ -109,9 +194,59 @@ header {
     flex-wrap: wrap;
   }
 }
-@media only screen and (max-width: 239px) {
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (min-width: 330px) and (max-width: 366px) {
   h1 {
-    font-size: 1rem;
+    font-size: 1.4rem;
+    word-wrap: break-word;
+  }
+
+  .appBar-1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .image {
+    height: 70px;
+  }
+}
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (min-width: 289px) and (max-width: 330px) {
+  h1 {
+    font-size: 1.3rem;
+    word-wrap: break-word;
+  }
+
+  .appBar-1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .image {
+    height: 50px;
+  }
+}
+@media only screen and (max-width: 288px) {
+  h1 {
+    font-size: 1.2rem;
     word-wrap: break-word;
   }
 
@@ -127,6 +262,17 @@ header {
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
+  }
+
+  .image {
+    height: 50px;
+    padding-bottom: 0px;
+  }
+
+  .menu-toggle {
+    width: 30px;
+    height: 20px;
+    margin-right: 20px;
   }
 }
 
@@ -190,7 +336,7 @@ header {
 .login-btn {
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: #5540bf;
   cursor: pointer;
   padding: 6px 5px;
   font-size: 0.875rem;
@@ -199,7 +345,8 @@ header {
   border-radius: 10px;
   width: auto;
   position: relative;
-  min-width: 80px;
+  min-width: 110px;
+  height: 40px;
 }
 
 .login-btn:after {
@@ -212,10 +359,10 @@ header {
 }
 
 .login-btn:hover {
-  background: #2b2bff;
+  background: #624dcb;
   transition: all 0.5s;
   border-radius: 10px;
-  box-shadow: 0px 6px 15px #0000ff61;
+  box-shadow: 0px 4px 16px #3d3d8f;
   padding: 0.5rem 0.5rem 0.5rem 0.5rem;
   color: #ffffff;
   font-weight: 600;
@@ -224,4 +371,125 @@ header {
   opacity: 1;
   transition: all 0.5s;
   color: #ffffff;
+}
+
+@keyframes menu {
+  0% {
+    left: 0px;
+    top: -100px;
+  }
+  100% {
+    left: 0px;
+    top: 0px;
+  }
+}
+
+@media (max-width: 280px) {
+  html {
+    font-size: 80%;
+  }
+}
+@media (max-width: 200px) {
+  html {
+    font-size: 50%;
+  }
+}
+@media (max-width: 630px) {
+  .hero .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .form-group {
+    display: block;
+  }
+}
+
+@media (max-width: 710px) {
+  .menu-section nav {
+    display: none;
+  }
+
+  .one,
+  .two,
+  .three {
+    background-color: #ffffff;
+    height: 5px;
+    width: 100%;
+    margin: 6px auto;
+    transition-duration: 0.3s;
+  }
+  .menu-toggle {
+    width: 40px;
+    height: 30px;
+    margin-right: 20px;
+  }
+
+  /*Fullscreen*/
+  .menu-section.on {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: hsl(250deg 55% 15%);
+    z-index: 10; /*camada acima, evitar o scrool dos itens a baixo*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .menu-section.on nav {
+    display: block;
+  }
+
+  .menu-section.on .menu-toggle {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+  }
+
+  .menu-section.on .menu-toggle .one {
+    transform: rotate(45deg) translate(7px, 7px);
+    background-color: #fff;
+  }
+
+  .menu-section.on .menu-toggle .two {
+    opacity: 0;
+  }
+
+  .menu-section.on .menu-toggle .three {
+    transform: rotate(-45deg) translate(8px, -9px);
+    background-color: #fff;
+  }
+
+  .menu-section.on nav ul {
+    text-align: center;
+    display: block;
+  }
+
+  .menu-section.on nav ul a {
+    transition-duration: 0.5s;
+    font-size: 1.4rem;
+    display: block;
+    color: #fff;
+    padding: 1.8rem;
+  }
+
+  header nav ul li a .FiLogOut {
+    width: 40px;
+  }
+  .menu-section.on nav ul .hide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0rem;
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 320px) {
+  #form h3 {
+    font-size: 1.4rem;
+  }
 }

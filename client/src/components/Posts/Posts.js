@@ -9,7 +9,13 @@ const Posts = ({ setCurrentId }) => {
   const { posts, isLoading } = useSelector((state) => state.posts);
   const classes = useStyles();
 
-  if (!posts.length && !isLoading) return 'No posts';
+  if (!posts.length && !isLoading) {
+    return (
+      <Grid className={classes.grid} item xs={12} sm={8} md={8}>
+        Sem postagens!
+      </Grid>
+    );
+  }
 
   return (
     isLoading ? (
@@ -20,7 +26,7 @@ const Posts = ({ setCurrentId }) => {
       <Grid className={classes.grid2} item xs={12} sm={8} md={8}>
         <Grid className={classes.container} container alignItems="stretch" spacing={3}>
           {posts?.map((post) => (
-            <Grid key={post._id} item xs={12} sm={12} md={6} lg={3}>
+            <Grid key={post._id} item xs={12} sm={12} md={6} lg={4}>
               <Post post={post} setCurrentId={setCurrentId} />
             </Grid>
           ))}

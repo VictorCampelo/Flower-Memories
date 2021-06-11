@@ -4,9 +4,18 @@ export default makeStyles((theme) => ({
   media: {
     borderRadius: '20px',
     objectFit: 'cover',
-    width: '100%',
-    maxHeight: '600px',
-
+    // width: '100%',
+    // maxHeight: '600px',
+    maxWidth: '80%',
+    maxHeight: '80%',
+  },
+  main: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignContent: 'center',
+    alignItems: 'center',
+    flexWrap: 'nowrap',
+    flexDirection: 'row',
   },
   card: {
     display: 'flex',
@@ -26,6 +35,12 @@ export default makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       marginLeft: 0,
     },
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+    justifyContent: 'center',
+    alignContent: 'center',
   },
   recommendedPosts: {
     display: 'flex',

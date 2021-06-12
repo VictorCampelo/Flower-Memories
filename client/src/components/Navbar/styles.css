@@ -37,7 +37,7 @@ header nav ul {
 
 header nav ul li {
   list-style: none;
-  padding-left: 1rem;
+  /* padding-left: 1rem; */
 }
 
 header nav ul li a {
@@ -132,6 +132,10 @@ header nav ul li a .FiLogOut {
     justify-content: space-between;
     flex-wrap: nowrap;
   }
+
+  ul {
+    padding-left: 1rem;
+  }
 }
 
 /* All Mobile Sizes (devices and browser) */
@@ -143,6 +147,9 @@ header nav ul li a .FiLogOut {
   }
 }
 
+.menu-section.on nav ul {
+  padding-inline-start: 0px;
+}
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
   .appBar-1 {
@@ -150,6 +157,7 @@ header nav ul li a .FiLogOut {
     justify-content: space-between;
     flex-wrap: nowrap;
   }
+
 }
 
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */

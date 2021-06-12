@@ -71,7 +71,7 @@ const Home = () => {
                 onKeyDown={handleKeyPress}
                 name="search"
                 variant="outlined"
-                label="Procurar Postagem"
+                label="Título"
                 fullWidth
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
@@ -81,7 +81,7 @@ const Home = () => {
                 value={tags}
                 onAdd={(chip) => handleAddChip(chip)}
                 onDelete={(chip) => handleDeleteChip(chip)}
-                label="Procurar por Tag"
+                label="Tags"
                 variant="outlined"
               />
               {/* <Button
